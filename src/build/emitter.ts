@@ -809,7 +809,7 @@ export function emitWebIdl(
 
   function emitEventHandlerThis(prefix: string, i: Browser.Interface) {
     if (prefix === "") {
-      return `this: ${nameWithForwardedTypes(i)}, `;
+      return `this: ${i.name === "GlobalEventHandlers" ? "this" : nameWithForwardedTypes(i)}, `;
     } else {
       return polluter ? `this: ${polluter.name}, ` : "";
     }
