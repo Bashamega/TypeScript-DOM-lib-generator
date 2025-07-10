@@ -289,15 +289,6 @@
     },
     "enums": {
         "enum": {
-            "InsertPosition": {
-              "name": "InsertPosition",
-              "value": [
-                "beforebegin",
-                "beforeend",
-                "afterbegin",
-                "afterend"
-              ]
-            },
             "ClientType": {
                 "name": "ClientTypes"
             },
