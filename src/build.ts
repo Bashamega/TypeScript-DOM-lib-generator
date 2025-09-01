@@ -95,7 +95,7 @@ async function emitDom() {
   const overriddenItems = await readInputJSON("overridingTypes.jsonc");
   const addedItems = await readInputJSON("addedTypes.jsonc");
   const patches = await readPatches("patches");
-  const removals = await readPatches("removes");
+  const removes = await readPatches("removes");
   const comments = await readInputJSON("comments.json");
   const deprecatedInfo = await readInputJSON("deprecatedMessage.json");
   const documentationFromMDN = await generateDescriptions();
@@ -229,7 +229,7 @@ async function emitDom() {
   webidl = merge(webidl, getDeprecationData(webidl));
   webidl = merge(webidl, getRemovalData(webidl));
   webidl = merge(webidl, getDocsData(webidl));
-  webidl = prune(webidl, removals);
+  webidl = prune(webidl, removes);
   webidl = prune(webidl, removedItems);
   webidl = mergeApiDescriptions(webidl, documentationFromMDN);
   webidl = merge(webidl, addedItems);
