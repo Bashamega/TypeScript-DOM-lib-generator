@@ -161,8 +161,8 @@ export async function readPatch(fileUrl: URL): Promise<any> {
 /**
  * Read, parse, and merge all KDL files under the input folder.
  */
-export default async function readPatches(): Promise<any> {
-  const patchDirectory = new URL("../../inputfiles/patches/", import.meta.url);
+export default async function readPatches(file: "patches" | "removes"): Promise<any> {
+  const patchDirectory = new URL(`../../inputfiles/${file}/`, import.meta.url);
   const fileUrls = await getAllFileURLs(patchDirectory);
 
   const parsedContents = await Promise.all(fileUrls.map(readPatch));
