@@ -7,6 +7,8 @@ import type {
   WebIdl,
   Method,
   Typed,
+  Signature,
+  Param,
 } from "./types.js";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
@@ -234,7 +236,7 @@ function handleMethod(child: Node): Partial<Method> {
   const name = string(child.values[0]);
 
   let typeNode: Node | undefined;
-  const params: { name: string; type: string }[] = [];
+  const params: Param[] = [];
 
   for (const c of child.children) {
     switch (c.name) {
@@ -257,7 +259,7 @@ function handleMethod(child: Node): Partial<Method> {
     }
   }
 
-  const signature: Method["signature"] = [
+  const signature: Signature[] = [
     {
       param: params,
       ...(typeNode

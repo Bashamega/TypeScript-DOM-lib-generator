@@ -1,4 +1,5 @@
 import { readFile } from "fs/promises";
+import { WebIdl } from "./types.js";
 
 const inputFile = new URL("../../inputfiles/mdn.json", import.meta.url);
 
@@ -77,9 +78,7 @@ function generateComment(summary: string, name: string): string | undefined {
     .trim();
 }
 
-export async function generateDescriptions(): Promise<{
-  interfaces: { interface: Record<string, any> };
-}> {
+export async function generateDescriptions(): Promise<WebIdl> {
   const content = await readFile(new URL(inputFile), "utf8");
   const mdn = JSON.parse(content);
   const results: Record<string, any> = {};

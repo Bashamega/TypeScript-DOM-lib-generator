@@ -131,7 +131,7 @@ async function emitDom() {
 
   function mergeApiDescriptions(
     idl: Browser.WebIdl,
-    descriptions: { interfaces: { interface: Record<string, any> } },
+    descriptions: Browser.WebIdl,
   ) {
     const namespaces = arrayToMap(
       idl.namespaces!,
@@ -140,7 +140,7 @@ async function emitDom() {
     );
 
     for (const [key, target] of Object.entries(namespaces)) {
-      const descObject = descriptions.interfaces.interface[key];
+      const descObject = descriptions.interfaces!.interface[key];
       if (!descObject) {
         continue;
       }
