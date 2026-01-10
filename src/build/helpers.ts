@@ -134,6 +134,9 @@ export function merge<T>(
     throw new Error("Either `target` or `src` is null");
   }
   for (const k in src) {
+    if (k === "__proto__" || k === "constructor" || k === "prototype") {
+      continue;
+    }
     if (Object.getOwnPropertyDescriptor(src, k)) {
       if (Object.getOwnPropertyDescriptor(target, k)) {
         const targetProp = target[k];
