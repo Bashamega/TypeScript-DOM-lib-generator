@@ -12378,7 +12378,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/links)
      */
-    readonly links: HTMLCollectionOf<HTMLAnchorElement | HTMLAreaElement>;
+    readonly links: HTMLCollectionOf<HTMLAnchorElement<HTMLAnchorElement, HTMLAreaElement>>;
     /**
      * The read-only **`location`** property of the Document interface returns a Location object, which contains information about the URL of the document and provides methods for changing that URL and loading another URL.
      *
@@ -39734,7 +39734,7 @@ interface WebTransport {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/createUnidirectionalStream)
      */
-    createUnidirectionalStream(options?: WebTransportSendStreamOptions): Promise<WritableStream>;
+    createUnidirectionalStream(options?: WebTransportSendStreamOptions): WritableStream<WritableStream>;
 }
 
 declare var WebTransport: {

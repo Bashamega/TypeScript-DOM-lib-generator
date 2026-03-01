@@ -117,7 +117,7 @@ typedef SelectionDirection overrideType=#""forward" | "backward" | "none""#
 
 dictionary StructuredSerializeOptions {
   member transfer {
-    type {
+    type sequence {
       type Transferable
     }
   }
@@ -165,8 +165,10 @@ interface Document {
   }
   property links {
     type HTMLCollectionOf {
-      type HTMLAnchorElement
-      type HTMLAreaElement
+      type {
+        type HTMLAnchorElement
+        type HTMLAreaElement
+      }
     }
   }
   property plugins {

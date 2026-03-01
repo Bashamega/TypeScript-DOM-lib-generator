@@ -10599,7 +10599,7 @@ interface WebTransport {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/createUnidirectionalStream)
      */
-    createUnidirectionalStream(options?: WebTransportSendStreamOptions): Promise<WritableStream>;
+    createUnidirectionalStream(options?: WebTransportSendStreamOptions): WritableStream<WritableStream>;
 }
 
 declare var WebTransport: {

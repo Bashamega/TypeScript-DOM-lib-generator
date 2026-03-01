@@ -40,10 +40,10 @@ function optionalMember<const T>(prop: string, type: T, value?: Value) {
     [prop]: value as T extends "string"
       ? string
       : T extends "number"
-        ? number
-        : T extends "boolean"
-          ? boolean
-          : never,
+      ? number
+      : T extends "boolean"
+      ? boolean
+      : never,
   };
 }
 
@@ -59,10 +59,12 @@ function handleSingleTypeNode(type: Node): DeepPartial<Typed> {
   if (!isTyped) {
     throw new Error("Expected a type node");
   }
-  const typeValue = type.values[0];
+  // sometimes it is empty
+  const typeValue = type.values[0]
+    ?? (type.children[0]?.values?.[0] ?? undefined);
   const subType =
     type.children.length > 0 ? handleTyped(type.children) : undefined;
-  const isUnion = typeof type.properties.union == "boolean";
+  const isUnion = type.children.length > 1 ? true : typeof type.properties.union == "boolean";
   return {
     ...optionalMember("type", "string", typeValue),
     subtype:
